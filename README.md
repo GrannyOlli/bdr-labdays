@@ -1,4 +1,4 @@
 # Bdr Labdays Testproject
 
 ## Start
-mvn clean compiule spring-boot:run
+mvn clean compile spring-boot:run
