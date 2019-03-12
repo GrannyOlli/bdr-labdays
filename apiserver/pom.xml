@@ -12,6 +12,10 @@
 	<artifactId>apiserver</artifactId>
 	<modelVersion>4.0.0</modelVersion>
 
+	<properties>
+		<docker.image>de.bdr.labdays.apiserver</docker.image>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -57,37 +61,6 @@
 					<plugin>
 						<groupId>io.fabric8</groupId>
 						<artifactId>docker-maven-plugin</artifactId>
-						<version>0.28.0</version>
-						<executions>
-							<execution>
-								<id>image-build</id>
-								<goals>
-									<goal>build</goal>
-								</goals>
-								<phase>install</phase>
-							</execution>
-							<execution>
-								<id>image-push</id>
-								<goals>
-									<goal>push</goal>
-								</goals>
-								<phase>install</phase>
-							</execution>
-						</executions>
-						<configuration>
-							<images>
-								<image>
-									<name>docker-registry-default.192.168.42.112.nip.io/mini-che/de.bdr.labdays.apiserver:${project.version}</name>
-									<alias>dockerfile</alias>
-									<build>
-										<dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
-										<assembly>
-											<descriptorRef>artifact</descriptorRef>
-										</assembly>
-									</build>
-								</image>
-							</images>
-						</configuration>
 					</plugin>
 				</plugins>
 			</build>
@@ -97,17 +70,13 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
