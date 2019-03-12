@@ -85,7 +85,7 @@
 					<configuration>
 						<images>
 							<image>
-								<name>docker-registry-default.192.168.42.112.nip.io/mini-che/${docker.image}:${project.version}</name>
+								<name>${container-registry}/mini-che/${docker.image}:${project.version}</name>
 								<alias>dockerfile</alias>
 								<build>
 									<dockerFileDir>${project.build.directory}/docker-resources</dockerFileDir>
