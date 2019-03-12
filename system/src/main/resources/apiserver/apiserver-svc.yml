@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    fabric8.io/git-commit: 13082281d0090facee35514234a43e5d7d85670d
+    prometheus.io/port: "9779"
+    fabric8.io/scm-url: https://github.com/spring-projects/spring-boot/spring-boot-starter-parent/parent/apiserver
+    fabric8.io/iconUrl: img/icons/spring-boot.svg
+    fabric8.io/git-branch: master
+    prometheus.io/scrape: "true"
+    fabric8.io/scm-tag: HEAD
+  labels:
+    expose: "true"
+    app: apiserver
+    provider: fabric8
+    version: LocalBuild
+    group: de.bdr.labdays
+  name: apiserver
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: apiserver
+    provider: fabric8
+    group: de.bdr.labdays

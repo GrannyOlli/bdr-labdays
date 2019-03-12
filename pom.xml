@@ -18,6 +18,7 @@
 	<modules>
 		<module>apiserver</module>
 		<module>webapp</module>
+		<module>system</module>
 	</modules>
 
 	<properties>

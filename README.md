@@ -22,3 +22,9 @@ Webapp: http://localhost:8081/app
 
 ## Web-App Konfiguration
 Konfiguration API-Server Endpunkt über Umgebungsvariable APISERVER_URL, default ist http://localhost:8080
+
+## Installation von Helm
+git clone https://github.com/minishift/minishift-addons
+minishift addons install helm
+minishift addons enable helm
+minishift addons apply helm
