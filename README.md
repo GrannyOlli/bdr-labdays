@@ -19,3 +19,6 @@ mvn clean install -Dopenshift
 ## Anwendung testen
 API-Endpunkt Swagger: swagger-ui.html
 Webapp: http://localhost:8081/app
+
+## Web-App Konfiguration
+Konfiguration API-Server Endpunkt über Umgebungsvariable APISERVER_URL, default ist http://localhost:8080
