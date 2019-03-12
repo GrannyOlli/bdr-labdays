@@ -42,6 +42,13 @@
 							<phase>install</phase>
 						</execution>
 						<execution>
+							<id>helm</id>
+							<goals>
+								<goal>helm</goal>
+							</goals>
+							<phase>install</phase>
+						</execution>
+						<execution>
 							<goals>
 								<goal>resource</goal>
 								<goal>build</goal>

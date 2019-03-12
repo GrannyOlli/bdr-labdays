@@ -1,5 +1,7 @@
 package de.bdr.labdays.frontend;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Controller;
@@ -32,13 +34,14 @@ public class FrontendController {
 	}
 
 	@GetMapping("/app")
-	public String index(Model model) {
+	public String index(HttpSession session, Model model) {
 		
 		System.out.println("calling api-server " + apiserverUrl);
 		
 		Response response = this.restTemplate.getForObject(apiserverUrl + "/greeting?name={value}", Response.class,
 				"foo");
 		model.addAttribute("value", response.getContent());
+		model.addAttribute("sessionId", session.getId());
 		return "index";
 	}
 
