@@ -18,6 +18,10 @@ mvn clean install -Dopenshift
 
 Der Build erzeugt und pusht die Container-Images in der Minishift-Umgebung und erzeugt ein Helm-Chart.
 
+Installation mit Helm:
+
+helm install apiserver/target/apiserver-LocalBuild-helm.tar.gz
+
 ## Anwendung testen
 API-Endpunkt Swagger: swagger-ui.html
 Webapp: http://localhost:8081/app
@@ -26,6 +30,7 @@ Webapp: http://localhost:8081/app
 Konfiguration API-Server Endpunkt über Umgebungsvariable APISERVER_URL, default ist http://localhost:8080
 
 ## Installation von Helm
+
 minishift addon helm (https://github.com/minishift/minishift-addons/tree/master/add-ons/helm) did not work for us
 
 successful path:
