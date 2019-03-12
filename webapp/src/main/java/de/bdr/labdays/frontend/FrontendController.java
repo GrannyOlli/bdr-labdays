@@ -20,7 +20,6 @@ public class FrontendController {
 		public void setContent(String content) {
 			this.content = content;
 		}
-
 	}
 
 	@Value("${apiserver.url}")
@@ -34,6 +33,9 @@ public class FrontendController {
 
 	@GetMapping("/app")
 	public String index(Model model) {
+		
+		System.out.println("calling api-server " + apiserverUrl);
+		
 		Response response = this.restTemplate.getForObject(apiserverUrl + "/greeting?name={value}", Response.class,
 				"foo");
 		model.addAttribute("value", response.getContent());
