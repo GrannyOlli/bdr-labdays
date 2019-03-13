@@ -95,3 +95,5 @@ For jaeger to work, applications must be created with deployments instead of dep
 
 helm install apiserver-LocalBuild-helm.tar.gz
 
+To integrate the spring-boot applications with jaeger, a maven dependency to opentracing-spring-jaeger-cloud-starter must be provided in the projects pom.xml.
+

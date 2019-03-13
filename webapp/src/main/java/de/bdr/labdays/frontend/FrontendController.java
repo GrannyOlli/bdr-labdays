@@ -38,8 +38,13 @@ public class FrontendController {
 		
 		System.out.println("calling api-server " + apiserverUrl);
 		
+		// perform two request to demonstrate tracing
+		
 		Response response = this.restTemplate.getForObject(apiserverUrl + "/greeting?name={value}", Response.class,
 				"foo");
+		
+		this.restTemplate.postForLocation(apiserverUrl + "/greeting", null);
+		
 		model.addAttribute("value", response.getContent());
 		model.addAttribute("sessionId", session.getId());
 		return "index";
