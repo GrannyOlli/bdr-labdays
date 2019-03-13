@@ -26,15 +26,8 @@ helm install apiserver/target/apiserver-LocalBuild-helm.tar.gz
 API-Endpunkt Swagger: swagger-ui.html
 Webapp: http://localhost:8081/app
 
+Management-Endpoints unter /actuator, z.B. http://localhost:8080/actuator/health
+
 ## Web-App Konfiguration
 Konfiguration API-Server Endpunkt über Umgebungsvariable APISERVER_URL, default ist http://localhost:8080
-
-## Installation von Helm
-git clone https://github.com/minishift/minishift-addons
-
-minishift addons install helm
-
-minishift addons enable helm
-
-minishift addons apply helm
 
