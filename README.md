@@ -31,3 +31,26 @@ Management-Endpoints unter /actuator, z.B. http://localhost:8080/actuator/health
 ## Web-App Konfiguration
 Konfiguration API-Server Endpunkt über Umgebungsvariable APISERVER_URL, default ist http://localhost:8080
 
+
+## Installation von Helm
+
+minishift addon helm (https://github.com/minishift/minishift-addons/tree/master/add-ons/helm) did not work for us
+
+successful path:
+follow https://helm.sh/docs/using_helm/#installing-helm
+run:
+helm init
+oc create serviceaccount helm -n kube-system
+oc patch deployment/tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccountName":"helm"}}}}' -n kube-system
+oc adm policy add-cluster-role-to-user cluster-admin -z helm -n kube-system
+oc expose deployment/tiller-deploy --target-port=tiller --type=NodePort --name=tiller -n kube-system
+helm init -c
+
+Add into your ~/.bashrc this lines:
+eval "$(minishift oc-env)"
+export HELM_HOST="$(minishift ip):$(oc get svc/tiller -o jsonpath='{.spec.ports[0].nodePort}' -n kube-system --as=system:admin)"
+export MINISHIFT_ADMIN_CONTEXT="default/$(oc config view -o jsonpath='{.contexts[?(@.name=="minishift")].context.cluster}')/system:admin"
+
+run helm init -c
+
+you should see Happy Helming!
