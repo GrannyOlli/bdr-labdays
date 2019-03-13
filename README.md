@@ -1,5 +1,8 @@
 # Bdr Labdays Testproject
 
+## Voraussetzungen
+JDK < 10. Mit JDK10 gibt es ein Build-Problem aufgrund einer nicht kompatiblen Dependency zu Lombok.
+
 ## Start
 mvn clean compile spring-boot:run
 
@@ -88,5 +91,7 @@ oc create clusterrolebinding developer-jaeger-operator --clusterrole=jaeger-oper
 
 oc create -f jaeger-instance.yml
 
-For jaeger to work, applications must be created with deployments instead of deploymentconfigs. Otherwise no jaeger sidecar-containers will be created.
+For jaeger to work, applications must be created with deployments instead of deploymentconfigs. Otherwise no jaeger sidecar-containers will be created. For this the created helmcharts can be used:
+
+helm install apiserver-LocalBuild-helm.tar.gz
 
